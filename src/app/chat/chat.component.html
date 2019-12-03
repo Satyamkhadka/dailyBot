@@ -1,0 +1,51 @@
+<app-navigation></app-navigation>
+
+<!-- Start : Chat Header  
+<div class="menu">
+    <div class="name">Group Chat</div>
+</div>
+ End : Chat Header  -->
+
+
+<!-- Start : Chat section  -->
+<ol class="chat" #scrollMe [scrollTop]="scrollMe.scrollHeight" *ngIf="messages.length > 0">
+
+  <li [ngClass]="{'self': message.userId == user , 'other': message.userId != user }" *ngFor="let message of messages">
+    <img class="circle" src="https://avatars1.githubusercontent.com/u/26423814?v=4" height="40px">
+
+    <div class="msg">
+      <div class="user">{{ message.userId.username }}<span class="range admin">Satyam
+        </span>
+
+      </div>
+      <p> {{ message.message }} </p>
+      <time>{{ message.time }}</time>
+    </div>
+  </li>
+</ol>
+
+<!-- End : Chat section  -->
+
+
+<!-- Start : Chat Sending  -->
+<div class="typezone" color="accent">
+
+  <!--  <form [formGroup]="messageForm" (ngSubmit)="onSubmit(messageForm.value)" class="chatcontrol">
+      <div class="input-field">
+        <label for="message">What you want to do</label>
+        <input formControlName="message" id="message" type="text" >
+        <button class="waves-effect waves-light btn" type="submit" ><i class="material-icons right">send</i>Send</button>
+      </div>
+  </form> -->
+
+  <form class="form-inline" [formGroup]="messageForm" (ngSubmit)="onSubmit(messageForm.value)">
+    <div class="input-field">
+      <div>
+        <input id="message" type="text" formControlName="message" autocomplete="off">
+        <button type="submit"><i class="fa fa-send"></i> </button>
+      </div>
+    </div>
+  </form>
+
+</div>
+<!-- End : Chat Sending  -->

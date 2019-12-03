@@ -1,0 +1,22 @@
+::-webkit-scrollbar {
+  display: none;
+}
+
+.card-body {
+  padding: 0.4rem 0.4rem 0.4rem 0.4rem;
+}
+
+.card-body h5 {
+  margin-bottom: 0.4rem;
+}
+
+.card-text {
+  max-height: 114px;
+  overflow-y: scroll;
+  min-height: 114px;
+}
+
+.card-header {
+  max-height: 42px;
+  overflow-y: hidden;
+}

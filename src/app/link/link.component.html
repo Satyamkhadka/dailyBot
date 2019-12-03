@@ -1,0 +1,148 @@
+<app-navigation></app-navigation>
+
+<div class="container-flex mr-3 ml-3 mt-5">
+  <div class="row">
+    <div class="col-12">
+      <div class="card bg-light">
+        <div class="card-header">
+          <div class="container-flex">
+            <div class="row">
+              <div class="col-6 mt-1">Link Events</div>
+              <div class="col-6"> <a routerLink="/add-link" class="btn btn-sm btn-primary text-light float-right">
+                  Filter<i class="fa fa-plus pl-2"></i></a></div>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="container-flex">
+            <div class="row">
+
+
+
+              <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 mt-5"
+                *ngFor="let element of linkData; let i = index;">
+                <div class="card border border-info">
+                  <div class="card-header bg-warning text-left">
+                    {{element.title}}
+                  </div>
+                  <div class="card-body">
+                    <h6 class="card-subtitle text-muted">{{element['tag']}}</h6>
+                    <p class="card-text"> {{element['description']}} </p>
+
+                    <a class="btn btn-success w-50" data-toggle="modal" data-target="#exampleModalCenter"
+                      (click)="setEdit(i)">Edit<i class="fa fa-pencil pl-2"></i></a>
+                    <a class="btn btn-danger w-50" (click)="onDelete(element.id)">Delete<i
+                        class="fa fa-trash pl-2"></i></a>
+                    <a class="btn btn-warning w-100 mt-1" data-toggle="modal" data-target="#viewModalCenter"
+                      (click)="setView(i)">View<i class="fa fa-eye pl-2"></i></a>
+                  </div>
+                </div>
+              </div>
+
+
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- Edit Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Edit</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="linkForm">
+          <small class="form-text text-muted"> title </small>
+          <input id="title" type="text" class="form-control mb-2 w-100" placeholder="title" required
+            formControlName="title">
+
+          <small class="form-text text-muted"> tag </small>
+          <input id="tag" type="text" class="form-control mb-2" placeholder="tag" required formControlName="tag">
+
+          <small class="form-text text-muted"> description </small>
+          <input id="description" type="textarea" class="form-control mb-2" placeholder="description" required
+            formControlName="description">
+
+          <!-- <div class="custom-file mb-4">
+            <input type="file" class="custom-file-input" id="customFile" accept=".jpg,.jpeg" multiple
+              (change)="preview($event)">
+            <label class="custom-file-label" for="customFile"> {{fileName}}</label>
+          </div> -->
+          <!-- <button class="btn btn-lg btn-primary btn-block mb-1" type="submit"
+            (click)="onLinkSubmit(linkForm.value)">Create</button> -->
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="onEdit(linkForm.value)">Save
+          changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- View Modal -->
+<div class="modal fade" id="viewModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-warning">
+        <h5 class="modal-title" id="exampleModalCenterTitle">{{linkView.title}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container-flex">
+          <div class="row">
+
+
+
+            <div class="col-12">
+              <div class="card">
+                <div class="card-body">
+                  <a class="btn btn-success w-50" data-toggle="modal" data-target="#exampleModalCenter"
+                    data-dismiss="modal" (click)="setEdit(viewId)">Edit<i class="fa fa-pencil pl-2"></i></a>
+                  <a class="btn btn-danger w-50" data-dismiss="modal" (click)="onDelete(viewId)">Delete<i
+                      class="fa fa-trash pl-2"></i></a>
+
+                  <ul class="list-group">
+                    <li class="list-group-item list-group-item-info">
+                      <h6>{{linkView['createdDate']}} </h6>
+                    </li>
+                    <li class="list-group-item list-group-item-info">Tags: {{linkView['tag']}}
+                    </li>
+                    <li class="list-group-item list-group-item-info">
+                      <h3 [innerHTML]="linkView['description']"> </h3>
+                    </li>
+
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

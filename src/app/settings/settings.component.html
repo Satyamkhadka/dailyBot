@@ -1,0 +1,94 @@
+<app-navigation></app-navigation>
+<div class="container mt-5">
+  <div class="row padding">
+
+    <div class="col-sm-12 col-lg-12 col-md-12 col-xl-12">
+
+      <div class="card">
+        <div class="card-header text-center"> Change Preferences</div>
+        <div class="card-body">
+
+          <div class="container">
+            <div class="row">
+              <!-- here -->
+              <div class="col-12 w-50">
+
+                <div class="card">
+
+                  <div id="header_encap">
+                    <div class="card-header">
+                      <div class=".d-none .d-sm-block .d-md-none">
+                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                          <li class="nav-item" (click)="setSelected('daily')">
+                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
+                              aria-controls="home" aria-selected="true">Daily Events</a>
+                          </li>
+                          <li class="nav-item" (click)="setSelected('knowledge')">
+                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
+                              aria-controls="profile" aria-selected="false">Knowledge-Base</a>
+                          </li>
+                          <li class="nav-item" (click)="setSelected('link')">
+                            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab"
+                              aria-controls="contact" aria-selected="false">Links</a>
+                          </li>
+                          <li class="nav-item" (click)="setSelected('todo')">
+                            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab"
+                              aria-controls="contact" aria-selected="false">Todo</a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div id="body_encap">
+                    <div class="card-body">
+                      <!-- body here -->
+                      <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+
+                          <ul class="list-group">
+                            <li class="list-group-item active">Keywords for {{selectedTab}}</li>
+                            <li class="list-group-item border" *ngFor="let element of keymappings[selectedTab]">
+                              <div class="p-3">
+                                <span class="ml-5"> {{element}} </span>
+                                <span class="btn btn-danger border rounded-circle float-right mr-5">
+                                  <i class="fa fa-trash"></i>
+                                </span>
+                              </div>
+
+                            </li>
+                            <li class="list-group-item border">
+                              <div class="p-3">
+                                <form [formGroup]="keymappingForm">
+                                  <div class="form-group">
+                                    <input type="text" class="ml-5" placeholder="Add more here" formControlName="key">
+                                    <span class="btn btn-success border rounded-circle float-right mr-5"
+                                      (click)="onKeywordCreate(keymappingForm.value.key)"> <i class="fa fa-plus"></i>
+                                    </span>
+
+                                  </div>
+                                </form>
+                              </div>
+
+                            </li>
+                          </ul>
+
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+  </div>
+</div>
