@@ -94,6 +94,9 @@ export class FirestoreService {
   getTodo() {
     return this.firestore.collection('todo').snapshotChanges();
   }
+  getDashTodo() {
+    return this.firestore.collection('todo').ref.limit(5).orderBy('createdDate', 'desc').get()
+  }
 
   updateTodo(data) {
     const id = data.id;
@@ -128,9 +131,13 @@ export class FirestoreService {
 
 
   getLink() {
-    return this.firestore.collection('link').ref.limit(10).orderBy('createdDate', 'desc').get();
+    return this.firestore.collection('link').ref.orderBy('createdDate', 'desc').get();
   }
 
+  getDashLink() {
+    return this.firestore.collection('link').ref.limit(5).orderBy('createdDate', 'desc').get();
+
+  }
   updateLink(data) {
     const id = data.id;
     delete data.id;

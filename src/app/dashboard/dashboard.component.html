@@ -1,2 +1,55 @@
 <app-navigation></app-navigation>
-  
+<div class="wrapper">
+
+  <div class='location'>
+    <h1 class='location-timezone'> {{timezone}}</h1>
+  </div>
+  <div class="temperature">
+    <div class="degree-section">
+      <h2 class="temperature-degree">{{temperature}} </h2>
+      <span>C</span>
+    </div>
+  </div>
+</div>
+<div class="container-fluid">
+
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-lg-6 col-xl-6">
+      <div class="h3"> ToDos</div>
+      <table class="table table-striped">
+        <tr>
+          <th scope="col"> SN</th>
+          <th scope="col"> ToDos </th>
+          <th scope="col"> Description </th>
+
+        </tr>
+        <tr *ngFor="let item of toDoData; let i = index;">
+          <td scope="col"> {{i+1}}</td>
+          <td scope="col"> {{item.title}} </td>
+          <td scope="col"> {{item.description}} </td>
+
+        </tr>
+      </table>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-lg-6 col-xl-6">
+      <div class="h3"> Quick Links</div>
+
+      <table class="table table-striped">
+        <tr>
+          <th scope="col"> SN</th>
+          <th scope="col"> Quick Links </th>
+          <th scope="col"> Links </th>
+
+        </tr>
+
+        <tr *ngFor="let item of linkData; let i = index;">
+          <td scope="col"> {{i+1}}</td>
+          <td scope="col"> {{item.title}} </td>
+          <td scope="col"> {{item.description}} </td>
+
+        </tr>
+      </table>
+    </div>
+  </div>
+
+</div>
