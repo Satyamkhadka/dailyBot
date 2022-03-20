@@ -1,6 +1,7 @@
 # DailyBot
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.9.
+dailybot is a chat styled bot to save your daily events like a daily diary, notes, links and todos.
+Envisoned to work as a smart voice enabled personal assistant but now only chat works.
 
 ## Development server
 
